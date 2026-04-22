@@ -240,7 +240,7 @@ The right button is the "PUSH2" button on the evaluation board.
 #endif
 
 uint8_t fg10ms = 0;
-uint8_t fg10msdelay = 0;
+volatile uint8_t fg10msdelay = 0;
 
 /*
 	系统相关变量
@@ -438,10 +438,11 @@ void Key_Scan(void)
 						break;
 
 					case 3:
-						g_u8Key_Code = KEYCODE_DOUBLE_CLICKED;
-						
+						key_pre_code = KEYCODE_DOUBLE_CLICKED;
+						break;
+					
 					case 4:
-						g_u8Key_Code = KEYCODE_CHANGE_MODE;
+						key_pre_code = KEYCODE_CHANGE_MODE;
 						break;	
 
 					case 5:

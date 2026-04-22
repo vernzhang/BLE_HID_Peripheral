@@ -439,11 +439,16 @@ void Douyin_Click_likes(void)
 
   poweroff_count = IDLE_CONNECTION_TIMEOUT/10;
   
-	report.buttons = 0x00;
+	report.buttons = BUTTON_LEFT_PRESSED;
 	report.x = 0;
 	report.y = 0;
 	Send_Mouse_Report(&report);
-	Delay_10MS(1);
+	report.buttons = 0;
+	Send_Mouse_Report(&report);
+	Delay_10MS(10);
+	report.buttons = BUTTON_LEFT_PRESSED;
+	Send_Mouse_Report(&report);
+	report.buttons = 0;
 	Send_Mouse_Report(&report);
 }
 
